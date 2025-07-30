@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Abhishek Kumar - Data Scientist Portfolio</title>
+    <link rel="stylesheet" href="page.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .hero {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 60px 40px;
+            text-align: center;
+            margin-bottom: 40px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 10px;
+        }
+
+        .hero .subtitle {
+            font-size: 1.3rem;
+            color: #666;
+            margin-bottom: 20px;
+        }
+
+        .hero .contact {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #555;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .contact-item:hover {
+            color: #667eea;
+        }
+
+        .section {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .section h2 {
+            font-size: 2.2rem;
+            color: #333;
+            margin-bottom: 30px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .section h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border-radius: 2px;
+        }
+
+        .about-text {
+            font-size: 1.1rem;
+            color: #555;
+            line-height: 1.8;
+            margin-bottom: 30px;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 20px;
+        }
+
+        .skill-category {
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 15px;
+            border-left: 4px solid #667eea;
+        }
+
+        .skill-category h3 {
+            color: #333;
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+        }
+
+        .skill-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+
+        .skill-bar {
+            width: 100px;
+            height: 8px;
+            background: #e9ecef;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .skill-progress {
+            height: 100%;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border-radius: 4px;
+            animation: fillBar 2s ease-out;
+        }
+
+        @keyframes fillBar {
+            from {
+                width: 0;
+            }
+
+            to {
+                width: var(--skill-level);
+            }
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-top: 20px;
+        }
+
+        .project-card {
+            background: #f8f9fa;
+            border-radius: 15px;
+            padding: 25px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border-left: 4px solid #667eea;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+        }
+
+        .project-card h3 {
+            color: #333;
+            margin-bottom: 10px;
+            font-size: 1.3rem;
+        }
+
+        .project-card .company {
+            color: #667eea;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .project-card .period {
+            color: #888;
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+        }
+
+        .project-card ul {
+            color: #555;
+            margin-left: 20px;
+        }
+
+        .project-card li {
+            margin-bottom: 8px;
+        }
+
+        .experience-timeline {
+            position: relative;
+            margin-top: 20px;
+        }
+
+        .timeline-item {
+            background: #f8f9fa;
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 25px;
+            border-left: 4px solid #667eea;
+            position: relative;
+        }
+
+        .timeline-item h3 {
+            color: #333;
+            margin-bottom: 5px;
+            font-size: 1.3rem;
+        }
+
+        .timeline-item .company {
+            color: #667eea;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .timeline-item .period {
+            color: #888;
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+        }
+
+        .timeline-item ul {
+            color: #555;
+            margin-left: 20px;
+        }
+
+        .timeline-item li {
+            margin-bottom: 8px;
+        }
+
+        .education-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 20px;
+        }
+
+        .education-card,
+        .cert-card {
+            background: #f8f9fa;
+            border-radius: 15px;
+            padding: 25px;
+            border-left: 4px solid #667eea;
+        }
+
+        .education-card h3,
+        .cert-card h3 {
+            color: #333;
+            margin-bottom: 10px;
+            font-size: 1.2rem;
+        }
+
+        .education-card .institution,
+        .cert-card .institution {
+            color: #667eea;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .education-card .period,
+        .cert-card .period {
+            color: #888;
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+        }
+
+        .achievement {
+            color: #555;
+            font-style: italic;
+        }
+
+        .cta-section {
+            text-align: center;
+            padding: 40px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            border-radius: 20px;
+            margin-top: 30px;
+        }
+
+        .cta-section h2 {
+            margin-bottom: 20px;
+            color: white;
+        }
+
+        .cta-section h2::after {
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-2px);
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero .contact {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .projects-grid,
+            .skills-grid,
+            .education-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .section {
+                padding: 25px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <!-- Hero Section -->
+        <div class="hero">
+            <h1>Abhishek Kumar</h1>
+            <p class="subtitle">Results-Driven Data Scientist</p>
+            <p style="color: #666; margin-bottom: 20px;">Specialized in forecasting models, data management, and
+                innovative analytics solutions</p>
+            <div class="contact">
+
+                <a href="mailto:connectingwithabhishek@gmail.com" class="contact-item">
+                    <svg xmlns="http://www.w3.org/2000/</a>svg" width="20" height="20"
+                        style="vertical-align: middle; margin-right: 0px;" viewBox="0 0 24 24" fill="#EA4335">
+                        <path
+                            d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 2v.01L12 13 4 6.01V6h16zm0 12H4V8l8 7 8-7v10z" />
+                    </svg>
+
+                </a>
+
+                <a href="https://www.linkedin.com/in/masterabhishek/" class="contact-item">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                        style="vertical-align: middle; margin-right: 2px;" viewBox="0 0 24 24" fill="#0A66C2">
+                        <path
+                            d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.761 0 5-2.239 5-5v-14c0-2.761-2.239-5-5-5zm-11 19h-3v-10h3v10zm-1.5-11.268c-.966 0-1.75-.784-1.75-1.75s.784-1.75 1.75-1.75 1.75.784 1.75 1.75-.784 1.75-1.75 1.75zm13.5 11.268h-3v-5.604c0-1.337-.026-3.063-1.867-3.063-1.868 0-2.154 1.459-2.154 2.967v5.7h-3v-10h2.881v1.367h.041c.401-.761 1.379-1.563 2.838-1.563 3.036 0 3.6 2 3.6 4.594v5.602z" />
+                    </svg>
+
+                </a>
+                <a href="https://github.com/22f3002886" class="contact-item" target="_blank" rel="noopener">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                        style="vertical-align: middle; margin-right: 2px;" viewBox="0 0 24 24" fill="#333">
+                        <path
+                            d="M12 2C6.477 2 2 6.484 2 12.012c0 4.418 2.865 8.166 6.839 9.489.5.092.682-.217.682-.483 0-.237-.009-.868-.014-1.703-2.782.605-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.463-1.11-1.463-.908-.62.069-.608.069-.608 1.004.07 1.532 1.032 1.532 1.032.892 1.529 2.341 1.088 2.91.833.091-.647.35-1.088.636-1.339-2.221-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.254-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.025A9.564 9.564 0 0 1 12 6.844c.85.004 1.705.115 2.504.337 1.909-1.295 2.748-1.025 2.748-1.025.546 1.378.202 2.396.099 2.65.64.7 1.028 1.595 1.028 2.688 0 3.847-2.337 4.695-4.566 4.944.359.309.678.919.678 1.852 0 1.336-.012 2.417-.012 2.747 0 .268.18.579.688.481C19.138 20.174 22 16.426 22 12.012 22 6.484 17.523 2 12 2z" />
+                    </svg>
+
+                </a>
+                <a href="https://x.com/AbhiXplore" class="contact-item" target="_blank" rel="noopener">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                        style="vertical-align: middle; margin-right: 2px;" viewBox="0 0 24 24" fill="#111">
+                        <path
+                            d="M17.53 3H21.5l-7.16 8.2L23 21h-6.07l-4.81-5.98L6.5 21H2.5l7.66-8.77L1 3h6.18l4.37 5.43L17.53 3zm-1.09 16h2.13l-6.02-7.48-1.71 1.96L16.44 19zm-10.9-14l6.01 7.47 1.7-1.95L7.56 5H5.54z" />
+                    </svg>
+                </a>
+
+
+            </div>
+        </div>
+
+        <!-- About Section -->
+        <div class="section">
+            <h2>About Me</h2>
+            <p class="about-text">
+                I'm a results-driven Data Scientist with a proven track record in collecting, analyzing, and
+                interpreting large datasets. I specialize in creating innovative forecasting models and executing
+                comprehensive data management tasks. With exceptional analytical skills, meticulous attention to detail,
+                and a collaborative mindset, I'm actively seeking a Data Scientist role with a dynamic organization
+                where I can leverage my expertise to drive data-informed decision-making and business growth.
+            </p>
+        </div>
+
+        <!-- Skills Section -->
+        <div class="section">
+            <h2>Skills</h2>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h3>💻 Technical skills & Tools</h3>
+                    <div class="skill-item">
+                        <span>Power BI, Tableau & Excel</span>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="--skill-level: 95%;"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <span>MySQL & PostgreSQL</span>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="--skill-level: 90%;"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <span>EDA & Data Analysis</span>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="--skill-level: 85%;"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <span>Python, Java, R, Flask, JavaScript & Git </span>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="--skill-level: 99%;"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <span>ML, AI Automation & GenAI</span>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="--skill-level: 88%;"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <h3>🌍 Languages</h3>
+                    <div class="skill-item">
+                        <span>Hindi (Native)</span>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="--skill-level: 100%;"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <span>English (Full)</span>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="--skill-level: 95%;"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <span>German (Limited)</span>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="--skill-level: 40%;"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <h3>🤝 Interpersonal Skills</h3>
+                    <div class="skill-item">
+                        <span>Critical Thinking</span>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="--skill-level: 98%;"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <span>Analytical Reasonings</span>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="--skill-level: 95%;"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <span>Problem Solving </span>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="--skill-level: 97%;"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <span>Team Collaboration</span>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="--skill-level: 92%;"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Projects Section -->
+        <div class="section">
+            <h2>Key Projects & Achievements</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+
+                    <h3>Customer Churn Prediction System</h3>
+
+                    <ul>
+                        <li>Developed predictive models that identified at-risk customers with 87% accuracy, reducing
+                            churn by 23%</li>
+                        <li>Analyzed customer behavioral data including viewing patterns, payment history, and
+                            engagement metrics</li>
+                        <li>Created automated reporting dashboards for real-time customer retention insights</li>
+                        <li>Implemented machine learning pipeline using Random Forest and XGBoost algorithms</li>
+                        <li>Delivered actionable recommendations that enabled proactive customer retention strategies
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="project-card">
+                    <h3>Real Estate Price Prediction Model</h3>
+
+                    <ul>
+                        <li>Built regression models that improved property valuation accuracy by 18% compared to
+                            traditional methods</li>
+                        <li>Analyzed comprehensive real estate datasets including property features, location data, and
+                            market trends</li>
+                        <li>Created interactive price estimation tools for real estate professionals and buyers</li>
+                        <li>Implemented feature engineering techniques to handle complex geographical and temporal data
+                        </li>
+                        <li>Developed automated model retraining system to adapt to changing market conditions</li>
+                    </ul>
+                </div>
+
+                <div class="project-card">
+                    <h3>DNA Analysis & Forecasting Models</h3>
+
+                    <ul>
+                        <li>Developed innovative forecasting models that enhanced company productivity and efficiency by
+                            25%</li>
+                        <li>Analyzed DNA cloning research data with meticulous precision</li>
+                        <li>Created comprehensive reports for executive decision-making</li>
+                        <li>Implemented data management systems for large-scale biological datasets</li>
+                    </ul>
+                </div>
+
+                <div class="project-card">
+                    <h3>Automated Data Management System</h3>
+
+                    <ul>
+                        <li>Collaborated with Operations and Technology teams to develop automated analysis software
+                        </li>
+                        <li>Improved forecasting accuracy from 80% to 95% through advanced modeling techniques</li>
+                        <li>Managed and maintained company MS SQL server infrastructure</li>
+                        <li>Increased productivity and generated significant cost savings</li>
+                    </ul>
+                </div>
+
+                <div class="project-card">
+                    <h3>Multi-Platform Data Integration</h3>
+
+                    <ul>
+                        <li>Analyzed and interpreted raw data from multiple websites and platforms</li>
+                        <li>Created unified data models for comprehensive business insights</li>
+                        <li>Developed automated data collection and processing workflows</li>
+                        <li>Provided actionable recommendations based on data-driven insights</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+
+
+        <!-- Education & Certifications -->
+        <div class="section">
+            <h2>Education & Certifications</h2>
+            <div class="education-grid">
+                <div class="education-card">
+                    <h3>Mathematics, Statistics, Python, Business analytics, Business development Management and ML
+                        Practice</h3>
+                    <div class="institution">IIT Madras</div>
+                    <div class="period">September 2022 - May 2025</div>
+
+                </div>
+
+                <div class="education-card">
+                    <h3>IBM Data Science Professional Certificate and Google Advanced Data Analytics Professional
+                        Certificate</h3>
+                    <div class="institution">Coursera</div>
+                    <div class="period">September 2022 - May 2023 </div>
+                </div>
+
+                <div class="cert-card">
+                    <h3>Foundation of R, Social Network and Data Mining </h3>
+                    <div class="institution">NPTEL</div>
+                    <div class="period">October 2022 - May 2024</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Volunteering Section -->
+        <div class="section">
+            <h2>Community Involvement</h2>
+            <div class="timeline-item">
+                <h3>English, Math and Physics Tutor</h3>
+                <div class="company">Local Classes </div>
+                <div class="period">June 2014 - August 2014 | Suva, Fiji</div>
+                <ul>
+                    <li>Provided English language instruction to local community members</li>
+
+                    <li>Contributed to educational development in underserved communities</li>
+                    <li>Fostered a positive learning environment for diverse learners</li>
+                </ul>
+            </div>
+
+            <div class="timeline-item">
+                <h3>Research Core Team</h3>
+                <div class="company">Hilbert House Club, IIT Madras</div>
+                <div class="period">June 2023 - September 2023</div>
+                <ul>
+                    <li>Provided help in content research</li>
+
+                    <li>Contributed to develop the finance comunity of the club</li>
+
+                </ul>
+            </div>
+        </div>
+
+
+
+
+        <!-- Call to Action -->
+        <div class="cta-section">
+            <h2>Let's Connect</h2>
+            <p style="margin-bottom: 25px; font-size: 1.1rem;">Ready to bring data-driven insights to your organization?
+                I'd love to discuss how my expertise in forecasting models and data analysis can contribute to your
+                team's success.</p>
+            <a href="mailto:connectingwithabhishek@gmail.com" class="btn">Get In Touch</a>
+        </div>
+    </div>
+
+    <script>
+        // Add smooth scrolling and animations
+        document.addEventListener('DOMContentLoaded', function () {
+            // Animate skill bars when they come into view
+            const skillBars = document.querySelectorAll('.skill-progress');
+
+            const observerOptions = {
+                threshold: 0.5,
+                rootMargin: '0px 0px -100px 0px'
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.animation = 'fillBar 2s ease-out forwards';
+                    }
+                });
+            }, observerOptions);
+
+            skillBars.forEach(bar => {
+                observer.observe(bar);
+            });
+
+            // Add hover effects to project cards
+            const projectCards = document.querySelectorAll('.project-card');
+            projectCards.forEach(card => {
+                card.addEventListener('mouseenter', function () {
+                    this.style.transform = 'translateY(-8px) scale(1.02)';
+                });
+
+                card.addEventListener('mouseleave', function () {
+                    this.style.transform = 'translateY(0) scale(1)';
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>
